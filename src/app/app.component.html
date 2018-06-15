@@ -1,20 +1,41 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <h2>Tic Tac Game : </h2>
+  <div class="col-md-8">
+    <mat-grid-list class="tic-tac-grid" cols="3" rowHeight="100px">
+      <mat-grid-tile *ngFor="let block of gameService.ticTacBlocks;let i = index; trackBy: trackByFn"
+                     (click)="playerClick(i)"
+                     [colspan]="1"
+                     [rowspan]="1" style="border: solid lightgray">
+        <i [class]="block.symbol == 'done' ? 'material-icons tick' : 'material-icons cross'">{{ block.symbol }} </i>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div class="col-md-6">
+    <h2>Score:</h2>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td>Player 1 Score (You):</td>
+        <td>{{ gameService.ticTacPlayers[0].score }}</td>
+      </tr>
+
+      <tr>
+        <td>Player 2 Score (Computer):</td>
+        <td>{{ gameService.ticTacPlayers[1].score }}</td>
+      </tr>
+
+      <tr>
+        <td>Draw:</td>
+        <td>{{ gameService.draw }}</td>
+      </tr>
+
+      </tbody>
+    </table>
+    <a class="pull-right text-right" class="btn btn-dark" (click)="resetGame(event)" href="#">Reset Tic Tac Game</a>
+    <a class="pull-right text-right" class="btn btn-dark" (click)="startNewGame()" href="#">New Tic Tac Game</a>
+    <a class="pull-right text-right" class="btn btn-dark" (click)="getGameHistory()" href="#">History</a>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+
 
